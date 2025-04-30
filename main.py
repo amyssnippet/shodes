@@ -5,16 +5,16 @@ from scripts.dnn_trainer import DNNTrainer
 from scripts.visualize import Visualizer
 import logging
 
-logging.baseConfig(filename='logs/shodes.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='logs/shodes.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 
 def main():
-    n_oscillators=3
+    n_oscillators=2
     k=1.0
     kc=0.1
     lambda_=0.1
     m=1.0
-    epochs=1000
+    epochs=100
     logger.info('Starting SHODes Framework')
     print('Starting SHODes Framework...')
 
@@ -28,8 +28,8 @@ def main():
     dnn_trainer.train(epochs)
 
     visualizer=Visualizer(n_oscillators)
-    visualizer.plot_trajectories
-    visualizer.plot_potential
+    visualizer.plot_trajectories()
+    visualizer.plot_potential()
 
     logger.info('SHODes Framework completed')
     print('SHODes Framework completed')

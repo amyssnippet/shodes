@@ -4,11 +4,11 @@ import pandas as pd
 import os
 import logging
 
-logging.baseConfig(filename='logs/shodes.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='logs/shodes.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger()
 
 class DataGenerator:
-    def __init__(self, n_oscillators, k=1.0, kc=0.1, lambda_=0.1, m=1.0, t_span=(0,10), n_points=1000):
+    def __init__(self, n_oscillators, k=1.0, kc=0.1, lambda_=0.1, m=1.0, t_span=(0,10), n_points=100):
         self.n = n_oscillators
         self.k = k
         self.kc = kc
@@ -23,6 +23,7 @@ class DataGenerator:
         x = state[:self.n]
         v = state[self.n:]
         dxdt= v
+        dvdt = np.zeros(self.n)
         if model_type == 'mecpot':
             for i in range(self.n):
                 coupling = 0
@@ -72,7 +73,7 @@ class DataGenerator:
             print(f'Generated data for {model_type}')
             sol=odeint(self.equations, initial_conditions,t,args=(model_type,))
             x=sol[:,:self.n]
-            V=np.array([self.compute_potential(x[i], model_type) for i in range(self,n_points)])
+            V = np.array([self.compute_potential(x[i], model_type) for i in range(self.n_points)])
             data=pd.DataFrame({
                 'time': t,
                 **{f'x{i+1}': x[:,i] for i in range(self.n)},
