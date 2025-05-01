@@ -14,7 +14,7 @@ def main():
     kc=0.1
     lambda_=0.1
     m=1.0
-    epochs=100
+    epochs=1000
     logger.info('Starting SHODes Framework')
     print('Starting SHODes Framework...')
 

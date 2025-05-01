@@ -39,7 +39,7 @@ class DNNTrainer:
             V += self.lambda_ * tf.reduce_sum(x, axis=1)
         return V
 
-    def train(self, epochs=100):
+    def train(self, epochs=1000):
         for model_type in self.models:
             optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
             logger.info(f'Training DNN for {model_type}')

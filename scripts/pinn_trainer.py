@@ -65,7 +65,7 @@ class PINNTrainer:
         data_loss = tf.reduce_mean(tf.square(x_pred - x_true))
         return data_loss + physics_loss
 
-    def train(self, epochs=100):
+    def train(self, epochs=1000):
         for model_type in self.models:
             logger.info(f'Training PINNs for {model_type}')
             print(f'Training PINNs for {model_type}')
