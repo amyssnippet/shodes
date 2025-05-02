@@ -1805,3 +1805,207 @@
 2025-04-30 15:23:50,857 - INFO - Saved Potential plot for genpot2
 2025-04-30 15:23:50,966 - INFO - Saved Potential plot for genpot3
 2025-04-30 15:23:50,966 - INFO - SHODes Framework completed
+2025-05-03 00:24:32,639 - INFO - Starting SHODes Framework
+2025-05-03 00:24:32,641 - INFO - Generated data for mecpot
+2025-05-03 00:24:32,660 - INFO - Saved Data to data/mecpot_data.csv
+2025-05-03 00:24:32,666 - INFO - Generated data for genpot1
+2025-05-03 00:24:32,682 - INFO - Saved Data to data/genpot1_data.csv
+2025-05-03 00:24:32,686 - INFO - Generated data for genpot2
+2025-05-03 00:24:32,702 - INFO - Saved Data to data/genpot2_data.csv
+2025-05-03 00:24:32,707 - INFO - Generated data for genpot3
+2025-05-03 00:24:32,723 - INFO - Saved Data to data/genpot3_data.csv
+2025-05-03 00:24:33,034 - INFO - Training PINNs for mecpot
+2025-05-03 00:24:33,075 - WARNING - Calling GradientTape.gradient on a persistent tape inside its context is significantly less efficient than calling it outside the context (it causes the gradient ops to be recorded on the tape, leading to increased CPU and memory usage). Only call GradientTape.gradient inside the context if you actually want to trace the gradient in order to compute higher order derivatives.
+2025-05-03 00:24:33,089 - WARNING - Calling GradientTape.gradient on a persistent tape inside its context is significantly less efficient than calling it outside the context (it causes the gradient ops to be recorded on the tape, leading to increased CPU and memory usage). Only call GradientTape.gradient inside the context if you actually want to trace the gradient in order to compute higher order derivatives.
+2025-05-03 00:24:33,193 - INFO - mecpot PINN1, Epoch 0, Loss: 1.0736
+2025-05-03 00:24:38,753 - INFO - mecpot PINN1, Epoch 100, Loss: 0.0175
+2025-05-03 00:24:44,358 - INFO - mecpot PINN1, Epoch 200, Loss: 0.0137
+2025-05-03 00:24:50,148 - INFO - mecpot PINN1, Epoch 300, Loss: 0.0126
+2025-05-03 00:24:59,118 - INFO - mecpot PINN1, Epoch 400, Loss: 0.0123
+2025-05-03 00:25:05,063 - INFO - mecpot PINN1, Epoch 500, Loss: 0.0120
+2025-05-03 00:25:10,977 - INFO - mecpot PINN1, Epoch 600, Loss: 0.0117
+2025-05-03 00:25:18,595 - INFO - mecpot PINN1, Epoch 700, Loss: 0.0113
+2025-05-03 00:25:26,577 - INFO - mecpot PINN1, Epoch 800, Loss: 0.0109
+2025-05-03 00:25:33,667 - INFO - mecpot PINN1, Epoch 900, Loss: 0.0105
+2025-05-03 00:25:41,179 - INFO - Saved PINN 1 for mecpot
+2025-05-03 00:25:41,295 - INFO - mecpot PINN2, Epoch 0, Loss: 0.4338
+2025-05-03 00:25:48,965 - INFO - mecpot PINN2, Epoch 100, Loss: 0.0131
+2025-05-03 00:25:56,301 - INFO - mecpot PINN2, Epoch 200, Loss: 0.0125
+2025-05-03 00:26:03,759 - INFO - mecpot PINN2, Epoch 300, Loss: 0.0121
+2025-05-03 00:26:11,166 - INFO - mecpot PINN2, Epoch 400, Loss: 0.0116
+2025-05-03 00:26:18,020 - INFO - mecpot PINN2, Epoch 500, Loss: 0.0111
+2025-05-03 00:26:23,775 - INFO - mecpot PINN2, Epoch 600, Loss: 0.0107
+2025-05-03 00:26:29,462 - INFO - mecpot PINN2, Epoch 700, Loss: 0.0104
+2025-05-03 00:26:35,336 - INFO - mecpot PINN2, Epoch 800, Loss: 0.0101
+2025-05-03 00:26:41,032 - INFO - mecpot PINN2, Epoch 900, Loss: 0.0099
+2025-05-03 00:26:46,931 - INFO - Saved PINN 2 for mecpot
+2025-05-03 00:26:47,023 - INFO - mecpot PINN3, Epoch 0, Loss: 0.2596
+2025-05-03 00:26:52,946 - INFO - mecpot PINN3, Epoch 100, Loss: 0.0046
+2025-05-03 00:26:58,827 - INFO - mecpot PINN3, Epoch 200, Loss: 0.0042
+2025-05-03 00:27:04,428 - INFO - mecpot PINN3, Epoch 300, Loss: 0.0040
+2025-05-03 00:27:10,111 - INFO - mecpot PINN3, Epoch 400, Loss: 0.0038
+2025-05-03 00:27:16,025 - INFO - mecpot PINN3, Epoch 500, Loss: 0.0036
+2025-05-03 00:27:21,875 - INFO - mecpot PINN3, Epoch 600, Loss: 0.0035
+2025-05-03 00:27:27,691 - INFO - mecpot PINN3, Epoch 700, Loss: 0.0034
+2025-05-03 00:27:33,298 - INFO - mecpot PINN3, Epoch 800, Loss: 0.0033
+2025-05-03 00:27:38,975 - INFO - mecpot PINN3, Epoch 900, Loss: 0.0032
+2025-05-03 00:27:44,574 - INFO - Saved PINN 3 for mecpot
+2025-05-03 00:27:44,574 - INFO - Training PINNs for genpot1
+2025-05-03 00:27:44,678 - INFO - genpot1 PINN1, Epoch 0, Loss: 0.0832
+2025-05-03 00:27:49,959 - INFO - genpot1 PINN1, Epoch 100, Loss: 0.0187
+2025-05-03 00:27:55,392 - INFO - genpot1 PINN1, Epoch 200, Loss: 0.0178
+2025-05-03 00:28:01,520 - INFO - genpot1 PINN1, Epoch 300, Loss: 0.0168
+2025-05-03 00:28:07,896 - INFO - genpot1 PINN1, Epoch 400, Loss: 0.0156
+2025-05-03 00:28:13,545 - INFO - genpot1 PINN1, Epoch 500, Loss: 0.0140
+2025-05-03 00:28:18,929 - INFO - genpot1 PINN1, Epoch 600, Loss: 0.0123
+2025-05-03 00:28:24,300 - INFO - genpot1 PINN1, Epoch 700, Loss: 0.0099
+2025-05-03 00:28:29,693 - INFO - genpot1 PINN1, Epoch 800, Loss: 0.0075
+2025-05-03 00:28:35,064 - INFO - genpot1 PINN1, Epoch 900, Loss: 0.0059
+2025-05-03 00:28:40,394 - INFO - Saved PINN 1 for genpot1
+2025-05-03 00:28:40,471 - INFO - genpot1 PINN2, Epoch 0, Loss: 1.3435
+2025-05-03 00:28:46,041 - INFO - genpot1 PINN2, Epoch 100, Loss: 0.0031
+2025-05-03 00:28:51,491 - INFO - genpot1 PINN2, Epoch 200, Loss: 0.0020
+2025-05-03 00:28:56,890 - INFO - genpot1 PINN2, Epoch 300, Loss: 0.0018
+2025-05-03 00:29:02,300 - INFO - genpot1 PINN2, Epoch 400, Loss: 0.0017
+2025-05-03 00:29:07,723 - INFO - genpot1 PINN2, Epoch 500, Loss: 0.0016
+2025-05-03 00:29:13,118 - INFO - genpot1 PINN2, Epoch 600, Loss: 0.0016
+2025-05-03 00:29:18,529 - INFO - genpot1 PINN2, Epoch 700, Loss: 0.0015
+2025-05-03 00:29:23,941 - INFO - genpot1 PINN2, Epoch 800, Loss: 0.0015
+2025-05-03 00:29:29,338 - INFO - genpot1 PINN2, Epoch 900, Loss: 0.0014
+2025-05-03 00:29:34,709 - INFO - Saved PINN 2 for genpot1
+2025-05-03 00:29:34,787 - INFO - genpot1 PINN3, Epoch 0, Loss: 0.1843
+2025-05-03 00:29:40,333 - INFO - genpot1 PINN3, Epoch 100, Loss: 0.0040
+2025-05-03 00:29:45,704 - INFO - genpot1 PINN3, Epoch 200, Loss: 0.0035
+2025-05-03 00:29:51,084 - INFO - genpot1 PINN3, Epoch 300, Loss: 0.0033
+2025-05-03 00:29:56,433 - INFO - genpot1 PINN3, Epoch 400, Loss: 0.0032
+2025-05-03 00:30:01,803 - INFO - genpot1 PINN3, Epoch 500, Loss: 0.0031
+2025-05-03 00:30:07,208 - INFO - genpot1 PINN3, Epoch 600, Loss: 0.0031
+2025-05-03 00:30:12,596 - INFO - genpot1 PINN3, Epoch 700, Loss: 0.0030
+2025-05-03 00:30:17,956 - INFO - genpot1 PINN3, Epoch 800, Loss: 0.0029
+2025-05-03 00:30:23,338 - INFO - genpot1 PINN3, Epoch 900, Loss: 0.0029
+2025-05-03 00:30:28,537 - INFO - Saved PINN 3 for genpot1
+2025-05-03 00:30:28,537 - INFO - Training PINNs for genpot2
+2025-05-03 00:30:28,617 - INFO - genpot2 PINN1, Epoch 0, Loss: 4.1707
+2025-05-03 00:30:34,185 - INFO - genpot2 PINN1, Epoch 100, Loss: 2.3212
+2025-05-03 00:30:39,587 - INFO - genpot2 PINN1, Epoch 200, Loss: 2.0965
+2025-05-03 00:30:44,978 - INFO - genpot2 PINN1, Epoch 300, Loss: 1.9542
+2025-05-03 00:30:50,460 - INFO - genpot2 PINN1, Epoch 400, Loss: 1.7337
+2025-05-03 00:30:56,278 - INFO - genpot2 PINN1, Epoch 500, Loss: 1.4254
+2025-05-03 00:31:01,835 - INFO - genpot2 PINN1, Epoch 600, Loss: 1.2805
+2025-05-03 00:31:07,357 - INFO - genpot2 PINN1, Epoch 700, Loss: 1.1646
+2025-05-03 00:31:12,989 - INFO - genpot2 PINN1, Epoch 800, Loss: 0.9588
+2025-05-03 00:31:18,492 - INFO - genpot2 PINN1, Epoch 900, Loss: 0.5123
+2025-05-03 00:31:23,910 - INFO - Saved PINN 1 for genpot2
+2025-05-03 00:31:23,991 - INFO - genpot2 PINN2, Epoch 0, Loss: 0.0776
+2025-05-03 00:31:29,615 - INFO - genpot2 PINN2, Epoch 100, Loss: 0.0454
+2025-05-03 00:31:35,211 - INFO - genpot2 PINN2, Epoch 200, Loss: 0.0378
+2025-05-03 00:31:40,680 - INFO - genpot2 PINN2, Epoch 300, Loss: 0.0346
+2025-05-03 00:31:46,153 - INFO - genpot2 PINN2, Epoch 400, Loss: 0.0335
+2025-05-03 00:31:51,779 - INFO - genpot2 PINN2, Epoch 500, Loss: 0.0339
+2025-05-03 00:31:57,329 - INFO - genpot2 PINN2, Epoch 600, Loss: 0.0311
+2025-05-03 00:32:03,305 - INFO - genpot2 PINN2, Epoch 700, Loss: 0.0305
+2025-05-03 00:32:09,103 - INFO - genpot2 PINN2, Epoch 800, Loss: 0.0301
+2025-05-03 00:32:14,835 - INFO - genpot2 PINN2, Epoch 900, Loss: 0.0297
+2025-05-03 00:32:20,334 - INFO - Saved PINN 2 for genpot2
+2025-05-03 00:32:20,424 - INFO - genpot2 PINN3, Epoch 0, Loss: 0.2496
+2025-05-03 00:32:26,186 - INFO - genpot2 PINN3, Epoch 100, Loss: 0.0008
+2025-05-03 00:32:31,896 - INFO - genpot2 PINN3, Epoch 200, Loss: 0.0006
+2025-05-03 00:32:37,665 - INFO - genpot2 PINN3, Epoch 300, Loss: 0.0005
+2025-05-03 00:32:43,279 - INFO - genpot2 PINN3, Epoch 400, Loss: 0.0005
+2025-05-03 00:32:48,796 - INFO - genpot2 PINN3, Epoch 500, Loss: 0.0005
+2025-05-03 00:32:55,168 - INFO - genpot2 PINN3, Epoch 600, Loss: 0.0005
+2025-05-03 00:33:01,087 - INFO - genpot2 PINN3, Epoch 700, Loss: 0.0004
+2025-05-03 00:33:07,151 - INFO - genpot2 PINN3, Epoch 800, Loss: 0.0004
+2025-05-03 00:33:12,837 - INFO - genpot2 PINN3, Epoch 900, Loss: 0.0004
+2025-05-03 00:33:18,341 - INFO - Saved PINN 3 for genpot2
+2025-05-03 00:33:18,341 - INFO - Training PINNs for genpot3
+2025-05-03 00:33:18,429 - INFO - genpot3 PINN1, Epoch 0, Loss: 0.0594
+2025-05-03 00:33:24,285 - INFO - genpot3 PINN1, Epoch 100, Loss: 0.0284
+2025-05-03 00:33:30,046 - INFO - genpot3 PINN1, Epoch 200, Loss: 0.0248
+2025-05-03 00:33:35,916 - INFO - genpot3 PINN1, Epoch 300, Loss: 0.0234
+2025-05-03 00:33:41,613 - INFO - genpot3 PINN1, Epoch 400, Loss: 0.0222
+2025-05-03 00:33:47,297 - INFO - genpot3 PINN1, Epoch 500, Loss: 0.0208
+2025-05-03 00:33:53,069 - INFO - genpot3 PINN1, Epoch 600, Loss: 0.0192
+2025-05-03 00:33:58,754 - INFO - genpot3 PINN1, Epoch 700, Loss: 0.0179
+2025-05-03 00:34:05,046 - INFO - genpot3 PINN1, Epoch 800, Loss: 0.0165
+2025-05-03 00:34:10,806 - INFO - genpot3 PINN1, Epoch 900, Loss: 0.0197
+2025-05-03 00:34:16,395 - INFO - Saved PINN 1 for genpot3
+2025-05-03 00:34:16,475 - INFO - genpot3 PINN2, Epoch 0, Loss: 0.0168
+2025-05-03 00:34:22,278 - INFO - genpot3 PINN2, Epoch 100, Loss: 0.0011
+2025-05-03 00:34:28,056 - INFO - genpot3 PINN2, Epoch 200, Loss: 0.0008
+2025-05-03 00:34:34,140 - INFO - genpot3 PINN2, Epoch 300, Loss: 0.0007
+2025-05-03 00:34:40,313 - INFO - genpot3 PINN2, Epoch 400, Loss: 0.0006
+2025-05-03 00:34:46,257 - INFO - genpot3 PINN2, Epoch 500, Loss: 0.0006
+2025-05-03 00:34:52,073 - INFO - genpot3 PINN2, Epoch 600, Loss: 0.0005
+2025-05-03 00:34:57,622 - INFO - genpot3 PINN2, Epoch 700, Loss: 0.0005
+2025-05-03 00:35:03,395 - INFO - genpot3 PINN2, Epoch 800, Loss: 0.0005
+2025-05-03 00:35:08,998 - INFO - genpot3 PINN2, Epoch 900, Loss: 0.0005
+2025-05-03 00:35:14,475 - INFO - Saved PINN 2 for genpot3
+2025-05-03 00:35:14,553 - INFO - genpot3 PINN3, Epoch 0, Loss: 0.2227
+2025-05-03 00:35:21,111 - INFO - genpot3 PINN3, Epoch 100, Loss: 0.0005
+2025-05-03 00:35:26,960 - INFO - genpot3 PINN3, Epoch 200, Loss: 0.0002
+2025-05-03 00:35:32,710 - INFO - genpot3 PINN3, Epoch 300, Loss: 0.0001
+2025-05-03 00:35:38,787 - INFO - genpot3 PINN3, Epoch 400, Loss: 0.0001
+2025-05-03 00:35:44,557 - INFO - genpot3 PINN3, Epoch 500, Loss: 0.0001
+2025-05-03 00:35:50,260 - INFO - genpot3 PINN3, Epoch 600, Loss: 0.0001
+2025-05-03 00:35:55,930 - INFO - genpot3 PINN3, Epoch 700, Loss: 0.0001
+2025-05-03 00:36:01,577 - INFO - genpot3 PINN3, Epoch 800, Loss: 0.0001
+2025-05-03 00:36:07,190 - INFO - genpot3 PINN3, Epoch 900, Loss: 0.0001
+2025-05-03 00:36:12,662 - INFO - Saved PINN 3 for genpot3
+2025-05-03 00:36:12,755 - INFO - Training DNN for mecpot
+2025-05-03 00:36:13,829 - INFO - mecpot DNN, Epoch 0, Loss: 0.0002
+2025-05-03 00:36:46,143 - INFO - mecpot DNN, Epoch 100, Loss: 0.0000
+2025-05-03 00:37:19,111 - INFO - mecpot DNN, Epoch 200, Loss: 0.0000
+2025-05-03 00:37:51,745 - INFO - mecpot DNN, Epoch 300, Loss: 0.0000
+2025-05-03 00:38:24,812 - INFO - mecpot DNN, Epoch 400, Loss: 0.0000
+2025-05-03 00:38:57,579 - INFO - mecpot DNN, Epoch 500, Loss: 0.0000
+2025-05-03 00:39:30,564 - INFO - mecpot DNN, Epoch 600, Loss: 0.0000
+2025-05-03 00:40:04,500 - INFO - mecpot DNN, Epoch 700, Loss: 0.0000
+2025-05-03 00:40:38,002 - INFO - mecpot DNN, Epoch 800, Loss: 0.0000
+2025-05-03 00:41:11,094 - INFO - mecpot DNN, Epoch 900, Loss: 0.0000
+2025-05-03 00:41:44,151 - INFO - Saved DNN for mecpot
+2025-05-03 00:41:44,153 - INFO - Training DNN for genpot1
+2025-05-03 00:41:44,973 - INFO - genpot1 DNN, Epoch 0, Loss: 0.0102
+2025-05-03 00:42:17,837 - INFO - genpot1 DNN, Epoch 100, Loss: 0.0001
+2025-05-03 00:42:51,569 - INFO - genpot1 DNN, Epoch 200, Loss: 0.0000
+2025-05-03 00:43:24,758 - INFO - genpot1 DNN, Epoch 300, Loss: 0.0000
+2025-05-03 00:43:58,533 - INFO - genpot1 DNN, Epoch 400, Loss: 0.0000
+2025-05-03 00:44:31,589 - INFO - genpot1 DNN, Epoch 500, Loss: 0.0000
+2025-05-03 00:45:05,668 - INFO - genpot1 DNN, Epoch 600, Loss: 0.0000
+2025-05-03 00:45:39,042 - INFO - genpot1 DNN, Epoch 700, Loss: 0.0000
+2025-05-03 00:46:13,122 - INFO - genpot1 DNN, Epoch 800, Loss: 0.0000
+2025-05-03 00:46:46,190 - INFO - genpot1 DNN, Epoch 900, Loss: 0.0000
+2025-05-03 00:47:19,916 - INFO - Saved DNN for genpot1
+2025-05-03 00:47:19,918 - INFO - Training DNN for genpot2
+2025-05-03 00:47:20,733 - INFO - genpot2 DNN, Epoch 0, Loss: 0.0075
+2025-05-03 00:47:53,764 - INFO - genpot2 DNN, Epoch 100, Loss: 0.0001
+2025-05-03 00:48:28,081 - INFO - genpot2 DNN, Epoch 200, Loss: 0.0001
+2025-05-03 00:49:02,342 - INFO - genpot2 DNN, Epoch 300, Loss: 0.0001
+2025-05-03 00:49:36,536 - INFO - genpot2 DNN, Epoch 400, Loss: 0.0001
+2025-05-03 00:50:10,359 - INFO - genpot2 DNN, Epoch 500, Loss: 0.0000
+2025-05-03 00:50:44,236 - INFO - genpot2 DNN, Epoch 600, Loss: 0.0000
+2025-05-03 00:51:18,015 - INFO - genpot2 DNN, Epoch 700, Loss: 0.0000
+2025-05-03 00:51:51,708 - INFO - genpot2 DNN, Epoch 800, Loss: 0.0000
+2025-05-03 00:52:26,256 - INFO - genpot2 DNN, Epoch 900, Loss: 0.0000
+2025-05-03 00:52:59,840 - INFO - Saved DNN for genpot2
+2025-05-03 00:52:59,841 - INFO - Training DNN for genpot3
+2025-05-03 00:53:00,648 - INFO - genpot3 DNN, Epoch 0, Loss: 0.0112
+2025-05-03 00:53:34,584 - INFO - genpot3 DNN, Epoch 100, Loss: 0.0001
+2025-05-03 00:54:08,411 - INFO - genpot3 DNN, Epoch 200, Loss: 0.0001
+2025-05-03 00:54:42,587 - INFO - genpot3 DNN, Epoch 300, Loss: 0.0001
+2025-05-03 00:55:16,118 - INFO - genpot3 DNN, Epoch 400, Loss: 0.0001
+2025-05-03 00:55:50,291 - INFO - genpot3 DNN, Epoch 500, Loss: 0.0001
+2025-05-03 00:56:24,411 - INFO - genpot3 DNN, Epoch 600, Loss: 0.0001
+2025-05-03 00:56:58,837 - INFO - genpot3 DNN, Epoch 700, Loss: 0.0001
+2025-05-03 00:57:32,325 - INFO - genpot3 DNN, Epoch 800, Loss: 0.0001
+2025-05-03 00:58:06,621 - INFO - genpot3 DNN, Epoch 900, Loss: 0.0001
+2025-05-03 00:58:41,102 - INFO - Saved DNN for genpot3
+2025-05-03 00:58:41,450 - INFO - Saved trajectory plot for mecpot
+2025-05-03 00:58:41,574 - INFO - Saved trajectory plot for genpot1
+2025-05-03 00:58:41,682 - INFO - Saved trajectory plot for genpot2
+2025-05-03 00:58:41,772 - INFO - Saved trajectory plot for genpot3
+2025-05-03 00:58:42,096 - INFO - Saved Potential plot for mecpot
+2025-05-03 00:58:42,197 - INFO - Saved Potential plot for genpot1
+2025-05-03 00:58:42,306 - INFO - Saved Potential plot for genpot2
+2025-05-03 00:58:42,436 - INFO - Saved Potential plot for genpot3
+2025-05-03 00:58:42,436 - INFO - SHODes Framework completed
