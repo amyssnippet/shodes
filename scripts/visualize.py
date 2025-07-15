@@ -42,3 +42,25 @@ class Visualizer:
             plt.close()
             logger.info(f'Saved Potential plot for {model_type}')
             print(f'Saved Potential plot for {model_type}')
+            
+    def plot_loss_curves(self):
+        for model_type in self.models:
+            for i in range(self.n):
+                loss_file = f'models/{model_type}_pinns/loss_pinn_{i+1}.csv'
+                if os.path.exists(loss_file):
+                    df = pd.read_csv(loss_file)
+                    plt.plot(df['epoch'], df['loss'], label=f'PINN {i+1}')
+            
+            if os.path.exists(f'models/{model_type}_dnn/loss_dnn.csv'):
+                df_dnn = pd.read_csv(f'models/{model_type}_dnn/loss_dnn.csv')
+                plt.plot(df_dnn['epoch'], df_dnn['loss'], label='DNN', linestyle='--', color='black')
+
+            plt.xlabel('Epochs')
+            plt.ylabel('Loss')
+            plt.title(f'Loss vs Epochs - {model_type}')
+            plt.legend()
+            plt.grid(True)
+            plt.savefig(f'plots/{model_type}_loss_comparison.png')
+            plt.close()
+            logger.info(f'Saved loss plot for {model_type}')
+            print(f'Saved loss plot for {model_type}')

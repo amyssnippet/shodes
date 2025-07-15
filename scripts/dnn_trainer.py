@@ -8,22 +8,22 @@ logging.basicConfig(filename='logs/shodes.log', level=logging.INFO, format='%(as
 logger = logging.getLogger()
 
 class DNNTrainer:
-    def __init__(self, n_oscillators, k=1.0, kc=0.1, lambda_=0.1):
+    def __init__(self, n_oscillators, k=1.0, kc=0.1, lambda_=0.1, layers=None):
         self.n = n_oscillators
         self.k = k
         self.kc = kc
         self.lambda_ = lambda_
+        self.layers = layers if layers is not None else [100, 100, 100]
         self.models = ['mecpot', 'genpot1', 'genpot2', 'genpot3']
         self.dnns = {model: self.build_dnn() for model in self.models}
         os.makedirs('models', exist_ok=True)
 
     def build_dnn(self):
-        model = tf.keras.Sequential([
-            tf.keras.layers.Dense(100, activation='relu', input_shape=(self.n + 3,)),
-            tf.keras.layers.Dense(100, activation='relu'),
-            tf.keras.layers.Dense(100, activation='relu'),
-            tf.keras.layers.Dense(1)
-        ])
+        model = tf.keras.Sequential()
+        model.add(tf.keras.layers.Input(shape=(self.n + 3,)))
+        for units in self.layers:
+            model.add(tf.keras.layers.Dense(units, activation='relu'))
+        model.add(tf.keras.layers.Dense(1))
         return model
 
     def compute_potential(self, x, model_type):
@@ -48,17 +48,17 @@ class DNNTrainer:
             data = pd.read_csv(f'data/{model_type}_data.csv')
             x_data = np.array([data[f'x{i+1}'] for i in range(self.n)]).T
             V_true = data['potential_energy'].values
-            t = np.expand_dims(data['time'].values, axis=1)  # shape (N, 1)
+            t = np.expand_dims(data['time'].values, axis=1)
 
-            # Load PINNs
             pinns = [tf.keras.models.load_model(f'models/{model_type}_pinns/pinn_{i+1}.keras') for i in range(self.n)]
+            loss_history = []
 
             for epoch in range(epochs):
                 with tf.GradientTape() as tape:
                     pinn_outputs = []
                     for i, pinn in enumerate(pinns):
-                        x_i = x_data[:, i:i+1]      # shape (N, 1)
-                        inp = np.hstack([t, x_i])   # shape (N, 2)
+                        x_i = x_data[:, i:i+1]
+                        inp = np.hstack([t, x_i])
                         out = pinn.predict(inp, verbose=0)
                         pinn_outputs.append(out)
 
@@ -72,10 +72,17 @@ class DNNTrainer:
 
                 gradients = tape.gradient(loss, self.dnns[model_type].trainable_variables)
                 optimizer.apply_gradients(zip(gradients, self.dnns[model_type].trainable_variables))
+                loss_history.append(loss.numpy())
 
                 if epoch % 100 == 0:
                     logger.info(f'{model_type} DNN, Epoch {epoch}, Loss: {loss.numpy():.4f}')
                     print(f'{model_type} DNN, Epoch {epoch}, Loss: {loss.numpy():.4f}')
 
+            # Save model and loss
+            os.makedirs(f'models/{model_type}_dnn', exist_ok=True)
             self.dnns[model_type].save(f'models/{model_type}_dnn.keras')
+
+            df_loss = pd.DataFrame({'epoch': list(range(epochs)), 'loss': loss_history})
+            df_loss.to_csv(f'models/{model_type}_dnn/loss_dnn.csv', index=False)
+
             logger.info(f'Saved DNN for {model_type}')
