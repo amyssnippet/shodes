@@ -8,7 +8,7 @@ logging.basicConfig(filename='logs/shodes.log', level=logging.INFO, format='%(as
 logger = logging.getLogger()
 
 class DataGenerator:
-    def __init__(self, n_oscillators, k=1.0, kc=0.1, lambda_=0.1, m=1.0, t_span=(0,10), n_points=100):
+    def __init__(self, n_oscillators, k=1.0, kc=0.1, lambda_=0.1, m=1.0, t_span=(0,50), n_points=1000):
         self.n = n_oscillators
         self.k = k
         self.kc = kc
