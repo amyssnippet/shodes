@@ -3,14 +3,13 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import networkx as nx
 
-# ---- Kuramoto global coupling (classic) ----
-
+# --- Kuramoto and Strogatz Models ---
 def kuramoto_rhs(theta, omega, K):
     diff = theta[None, :] - theta[:, None]
     coupling = np.sum(np.sin(diff), axis=1) - np.sin(0)
     return omega + (K / 2) * coupling
 
-def simulate_kuramoto_2osc(T=10.0, dt=0.1, K=0.1, omega=None, theta0=None):
+def simulate_kuramoto_2osc(T=100.0, dt=0.1, K=0.1, omega=None, theta0=None):
     steps = int(T / dt)
     theta = np.zeros((steps + 1, 2))
     if omega is None:
@@ -31,8 +30,6 @@ def kuramoto_order_parameter(theta):
     z = np.mean(np.exp(1j * theta))
     return np.abs(z)
 
-# ---- Strogatz: Watts-Strogatz small-world network ----
-
 def watts_strogatz_adjacency(n, k=1, p=0.5, seed=42):
     G = nx.watts_strogatz_graph(n=n, k=k, p=p, seed=seed)
     A = nx.to_numpy_array(G, dtype=float)
@@ -44,7 +41,7 @@ def kuramoto_rhs_network(theta, omega, K, A):
     coupling = (A * np.sin(diff)).sum(axis=1)
     return omega + (K / max(1, A.shape[0])) * coupling
 
-def simulate_kuramoto_strogatz_2osc(T=10.0, dt=0.1, K=0.1, omega=None, theta0=None, p=0.5):
+def simulate_kuramoto_strogatz_2osc(T=100.0, dt=0.1, K=0.1, omega=None, theta0=None, p=0.5):
     n = 2
     A = watts_strogatz_adjacency(n=n, k=1, p=p, seed=42)
     steps = int(T / dt)
@@ -63,16 +60,14 @@ def simulate_kuramoto_strogatz_2osc(T=10.0, dt=0.1, K=0.1, omega=None, theta0=No
     time = np.linspace(0, T, steps + 1)
     return time, theta
 
-# ---- SHODes ML Model runner section ----
-
-def run_shodes_pinn_dnn(batch_size=100, n_oscillators=2, model_type='genpot3', params=[1.0, 0.1, 0.1]):
+# --- SHODes PINN and DNN model runner ---
+def run_shodes_pinn_dnn(batch_size=1001, n_oscillators=2, model_type='genpot3', params=[1.0, 0.1, 0.1]):
     pinn_path = f'models/merged_pinn_{model_type}.keras'
     dnn_path = f'models/merged_dnn_model.keras'
     merged_pinn = tf.keras.models.load_model(pinn_path)
     dnn = tf.keras.models.load_model(dnn_path)
-    # Use Kuramoto's phases as dummy displacements for ML model
-    time_ml, theta_ml = simulate_kuramoto_2osc(T=10, dt=0.1, K=params[2])
-    x_data = np.sin(theta_ml[:batch_size]).astype(np.float32) # Shape: (batch_size, n_oscillators)
+    time_ml, theta_ml = simulate_kuramoto_2osc(T=100.0, dt=0.1, K=params[2])
+    x_data = np.sin(theta_ml[:batch_size]).astype(np.float32)
     t_data = time_ml[:batch_size].astype(np.float32)
     t_input = np.expand_dims(t_data, axis=1)
     pinn_outputs = merged_pinn.predict([t_input, x_data])
@@ -81,34 +76,35 @@ def run_shodes_pinn_dnn(batch_size=100, n_oscillators=2, model_type='genpot3', p
     potential_predictions = dnn.predict(dnn_input)
     return time_ml[:batch_size], pinn_outputs, potential_predictions
 
-# ---- Main: run all and plot ----
-
-def main():
-    # Run Kuramoto (global coupling)
-    time_k, theta_k = simulate_kuramoto_2osc(T=10, dt=0.1, K=0.1)
-    R_kuramoto = np.array([kuramoto_order_parameter(theta_k[t]) for t in range(len(time_k))])
-
-    # Run Strogatz (Watts-Strogatz small-world)
-    time_s, theta_s = simulate_kuramoto_strogatz_2osc(T=10, dt=0.1, K=0.1, p=0.5)
-    R_strogatz = np.array([kuramoto_order_parameter(theta_s[t]) for t in range(len(time_s))])
-
-    # Run SHODes model
-    batch_size = 100
-    time_ml, pinn_outputs, potential_predictions = run_shodes_pinn_dnn(batch_size=batch_size)
-
-    # Plot all curves
-    plt.figure(figsize=(10,6))
-    plt.plot(time_k[:batch_size], R_kuramoto[:batch_size], label='Kuramoto R(t)', lw=2)
-    plt.plot(time_s[:batch_size], R_strogatz[:batch_size], label='Strogatz R(t) (Small-world)', lw=2)
-    plt.plot(time_ml, pinn_outputs[:, 0], label='SHODes PINN Osc1', lw=2, ls='--')
-    plt.plot(time_ml, pinn_outputs[:, 1], label='SHODes PINN Osc2', lw=2, ls='--')
-    plt.xlabel("Time")
-    plt.ylabel("Synchronization / Output")
-    plt.title("Kuramoto vs Strogatz vs SHODes ML Benchmark")
-    plt.legend()
-    plt.grid(True)
-    plt.savefig('benchmark3.png')
+# --- Plotting function including DNN energy ---
+def plot_benchmark_with_dnn(time_k, R_kuramoto, time_s, R_strogatz, time_ml, pinn_outputs, dnn_energy):
+    fig, axs = plt.subplots(2, 1, figsize=(12, 8), sharex=True, constrained_layout=True)
+    axs[0].plot(time_k, R_kuramoto, label='Kuramoto R(t)', linewidth=2)
+    axs[0].plot(time_s, R_strogatz, label='Strogatz R(t) (Small-world)', linewidth=2)
+    axs[0].set_ylabel('Order Parameter R(t)')
+    axs[0].legend()
+    axs[0].set_title('Synchronization: Kuramoto vs Strogatz')
+    axs[1].plot(time_ml, pinn_outputs[:, 0], '--', label='SHODes PINN Oscillator 1')
+    axs[1].plot(time_ml, pinn_outputs[:, 1], '--', label='SHODes PINN Oscillator 2')
+    axs[1].plot(time_ml, dnn_energy.squeeze(), ':', label='SHODes DNN Predicted Energy')
+    axs[1].set_xlabel('Time')
+    axs[1].set_ylabel('Amplitude / Energy')
+    axs[1].legend()
+    axs[1].set_title('SHODes PINN Dynamics and DNN Energy')
+    axs[1].grid(True)
+    axs[0].grid(True)
+    plt.savefig('benchmark_with_dnn.png')
     plt.show()
+
+# --- Main procedure for 100s simulation ---
+def main():
+    time_k, theta_k = simulate_kuramoto_2osc(T=100.0, dt=0.1, K=0.1)
+    R_kuramoto = np.array([kuramoto_order_parameter(theta_k[t]) for t in range(len(time_k))])
+    time_s, theta_s = simulate_kuramoto_strogatz_2osc(T=100.0, dt=0.1, K=0.1, p=0.5)
+    R_strogatz = np.array([kuramoto_order_parameter(theta_s[t]) for t in range(len(time_s))])
+    batch_size = len(time_k)
+    time_ml, pinn_outputs, dnn_energy = run_shodes_pinn_dnn(batch_size=batch_size)
+    plot_benchmark_with_dnn(time_k, R_kuramoto, time_s, R_strogatz, time_ml, pinn_outputs, dnn_energy)
 
 if __name__ == "__main__":
     main()
