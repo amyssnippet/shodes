@@ -9,13 +9,13 @@ logging.basicConfig(filename='logs/shodes.log', level=logging.INFO, format='%(as
 logger = logging.getLogger()
 
 def main():
-    n_oscillators = 2
+    n_oscillators = 25
     k = 1.0
     kc = 0.1
     lambda_ = 0.1
     m = 1.0
     pinn_epochs = 1500
-    pinn_layers = [64, 128, 256, 64]
+    pinn_layers = [512, 256, 128, 64]
     dnn_epochs = 1000
     dnn_layers = [128, 128, 64]
 
