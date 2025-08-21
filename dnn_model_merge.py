@@ -3,7 +3,7 @@ from tensorflow.keras.layers import Input, Dense, concatenate
 from tensorflow.keras.models import Model
 
 # Define parameters from your DNNTrainer (update n_oscillators as needed)
-n_oscillators = 2  # e.g., 5; set this to match your trainer init
+n_oscillators = 25  # e.g., 5; set this to match your trainer init
 
 # Array of DNN model file paths (add/remove based on your trained models)
 dnn_model_paths = [

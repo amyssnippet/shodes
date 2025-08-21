@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 # Configuration: Update these based on your project setup
-n_oscillators = 2  # From your trainer inits (e.g., 5)
+n_oscillators = 25  # From your trainer inits (e.g., 5)
 model_type = 'genpot3'  # e.g., 'mecpot', 'genpot1', 'genpot2', 'genpot3'
 use_merged_models = True  # Set to True if using merged models; False for individual
 params = [1.0, 0.1, 0.1]  # [k, kc, lambda_] from your trainers; update as needed

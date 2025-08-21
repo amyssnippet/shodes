@@ -3,7 +3,7 @@ from tensorflow.keras.layers import Input, Dense, concatenate
 from tensorflow.keras.models import Model
 
 # Define parameters from your PINNTrainer (update n_oscillators and model_type as needed)
-n_oscillators = 2  # e.g., 5; set this to match your trainer init
+n_oscillators = 25  # e.g., 5; set this to match your trainer init
 model_type = 'genpot3'  # Change to 'genpot1', 'genpot2', etc., and run the script for each type
 
 # Array of PINN model file paths for the selected model_type (generated dynamically)
