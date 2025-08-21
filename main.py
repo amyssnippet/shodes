@@ -9,7 +9,7 @@ logging.basicConfig(filename='logs/shodes.log', level=logging.INFO, format='%(as
 logger = logging.getLogger()
 
 def main():
-    n_oscillators = 25
+    n_oscillators = 100
     k = 1.0
     kc = 0.1
     lambda_ = 0.1
